@@ -1368,7 +1368,7 @@ let toastIndex = 0;
 function cycleToasts() {
   showToast(autoToasts[toastIndex % autoToasts.length]);
   toastIndex++;
-  setTimeout(cycleToasts, 5000);
+  setTimeout(cycleToasts, 10000);
 }
 setTimeout(cycleToasts, 2000);
 
