@@ -1368,9 +1368,9 @@ let toastIndex = 0;
 function cycleToasts() {
   showToast(autoToasts[toastIndex % autoToasts.length]);
   toastIndex++;
-  setTimeout(cycleToasts, 2500);
+  setTimeout(cycleToasts, 5000);
 }
-setTimeout(cycleToasts, 1500);
+setTimeout(cycleToasts, 2000);
 
 // ── Web Push Notifications ──
 function requestPushPermission() {
