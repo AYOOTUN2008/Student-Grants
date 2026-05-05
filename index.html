@@ -830,6 +830,7 @@
     </style>
   </head>
   <body>
+    <div class="toast-container" id="toast-container"></div>
     <!-- ===== PAGE 1: LANDING ===== -->
     <div class="page active" id="page-landing">
       <nav>
@@ -1334,6 +1335,52 @@ window.addEventListener('popstate', function() {
             document.getElementById("locked-overlay").style.display = "flex";
           }
         });
+        // ── Toast Notifications ──
+function showToast(msg) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.animation = 'toastOut 0.4s ease forwards';
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
+}
+
+// Auto toasts that fire on page load
+const autoToasts = [
+  "✅ Emeka just received his ₦80,000 Laptop Grant!",
+  "🎉 Blessing got approved for School Fees Support!",
+  "💚 Tunde's Upkeep Grant of ₦20,000 was sent!",
+  "🏥 Chioma received her Health Care Grant today!",
+  "📝 David just got his Project Fund — ₦10,000!",
+  "🔥 12 students got funded in the last 24 hours!",
+];
+
+let toastIndex = 0;
+function cycleToasts() {
+  showToast(autoToasts[toastIndex % autoToasts.length]);
+  toastIndex++;
+  setTimeout(cycleToasts, 5000);
+}
+setTimeout(cycleToasts, 2000);
+
+// ── Web Push Notifications ──
+function requestPushPermission() {
+  if ('Notification' in window) {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification('🎓 GrantFund NG', {
+          body: 'You\'re one step away from receiving your grant! Complete your application now.',
+          icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135755.png'
+        });
+      }
+    });
+  }
+}
+// Ask for push permission after 4 seconds on page
+setTimeout(requestPushPermission, 4000);
       });
     </script>
     <!-- BEGIN: Powered by Supercounters.com -->
