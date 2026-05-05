@@ -827,9 +827,15 @@
 @keyframes toastIn{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
 @keyframes toastOut{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-16px);}}
       }
+      .online-bar{width:100%;background:rgba(0,200,83,0.1);border-bottom:1px solid rgba(0,200,83,0.2);padding:8px 16px;text-align:center;font-size:13px;color:var(--g1);font-weight:500;letter-spacing:0.03em;}
+.online-dot{display:inline-block;width:8px;height:8px;background:var(--g1);border-radius:50%;margin-right:6px;animation:pulse 1.5s infinite;vertical-align:middle;}
     </style>
   </head>
   <body>
+    <div class="online-bar" id="online-bar">
+  <div class="online-dot"></div>
+  <span id="online-count">143</span> people online now
+</div>
     <div class="toast-container" id="toast-container"></div>
     <!-- ===== PAGE 1: LANDING ===== -->
     <div class="page active" id="page-landing">
@@ -1382,8 +1388,14 @@ function requestPushPermission() {
 // Ask for push permission after 4 seconds on page
 setTimeout(requestPushPermission, 4000);
       });
+      // Fluctuating online count
+function fluctuateOnline() {
+  const base = Math.floor(Math.random() * 80) + 110;
+  document.getElementById('online-count').textContent = base;
+}
+setInterval(fluctuateOnline, 4000);
     </script>
-    <!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1733933,"ffffff","d500ff");</script><!-- END: Powered by Supercounters.com -->
+   <!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1733964,"ff08ff","ff00f7");</script><!-- END: Powered by Supercounters.com -->
   </body>
 </html>
