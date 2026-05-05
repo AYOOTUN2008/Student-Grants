@@ -1369,7 +1369,7 @@ function cycleToasts() {
   showToast(autoToasts[toastIndex % autoToasts.length]);
   toastIndex++;
 }
-setInterval(cycleToasts, 2500);
+setInterval(cycleToasts, 100);
         
 // ── Web Push Notifications ──
 function requestPushPermission() {
